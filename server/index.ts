@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // CORS middleware for development - specific origin for credentials
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // Specific origin for credentials
+  res.header('Access-Control-Allow-Origin', 'https://mainwebsite-iota.vercel.app/'); // Specific origin for credentials
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
