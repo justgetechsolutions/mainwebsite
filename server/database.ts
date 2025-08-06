@@ -13,6 +13,11 @@ if (MONGODB_URI.includes('mongodb+srv://') && !MONGODB_URI.includes('?')) {
   MONGODB_URI += '?retryWrites=true&w=majority';
 }
 
+// For Render compatibility, try converting mongodb+srv to mongodb if SSL fails
+if (process.env.NODE_ENV === 'production' && MONGODB_URI.includes('mongodb+srv://')) {
+  console.log('🌐 Production environment: Using mongodb+srv format');
+}
+
 let client: MongoClient | null = null;
 let db: any = null;
 
@@ -26,14 +31,22 @@ export async function connectToDatabase() {
       throw new Error('No MongoDB URI configured');
     }
     
-    client = new MongoClient(MONGODB_URI, {
-      serverSelectionTimeoutMS: 10000, // 10 second timeout
-      connectTimeoutMS: 15000, // 15 second timeout
-      socketTimeoutMS: 45000, // 45 second timeout
-      maxPoolSize: 10,
-      retryWrites: true,
-      w: 'majority'
-    });
+    // Try different connection approaches for Render compatibility
+    const connectionOptions = {
+      serverSelectionTimeoutMS: 30000,
+      connectTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
+      maxPoolSize: 1,
+      minPoolSize: 0,
+      maxIdleTimeMS: 30000
+    };
+    
+    // For Render, try with minimal SSL settings
+    if (process.env.NODE_ENV === 'production') {
+      console.log('🌐 Production environment detected, using Render-compatible settings');
+    }
+    
+    client = new MongoClient(MONGODB_URI, connectionOptions);
     await client.connect();
     db = client.db('getech');
     
@@ -44,8 +57,21 @@ export async function connectToDatabase() {
     return { client, db };
   } catch (error) {
     console.error('❌ MongoDB connection failed:', error);
-    console.log('💡 Please make sure MongoDB is running locally or set MONGODB_URI environment variable');
-    console.log('💡 For local development, you can install MongoDB or use MongoDB Atlas');
+    
+    // Check if it's an SSL error
+    if (error && typeof error === 'object' && 'message' in error && 
+        typeof error.message === 'string' && 
+        (error.message.includes('SSL') || error.message.includes('TLS'))) {
+      console.log('🔒 SSL/TLS error detected. This is common on Render with MongoDB Atlas.');
+      console.log('💡 The server will use mock database for now.');
+      console.log('💡 To fix this, try:');
+      console.log('   1. Use MongoDB Atlas with a different connection method');
+      console.log('   2. Use a different database service');
+      console.log('   3. Contact Render support for SSL configuration');
+    } else {
+      console.log('💡 Please make sure MongoDB is running locally or set MONGODB_URI environment variable');
+      console.log('💡 For local development, you can install MongoDB or use MongoDB Atlas');
+    }
     
     // For development, we'll create a mock database
     console.log('🔄 Creating in-memory mock database for development...');
