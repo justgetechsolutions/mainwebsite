@@ -6,7 +6,12 @@ dotenv.config();
 
 // MongoDB connection with better error handling
 // Try to use MongoDB Atlas or local MongoDB
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/getech';
+let MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/getech';
+
+// Add required parameters for MongoDB Atlas
+if (MONGODB_URI.includes('mongodb+srv://') && !MONGODB_URI.includes('?')) {
+  MONGODB_URI += '?retryWrites=true&w=majority';
+}
 
 let client: MongoClient | null = null;
 let db: any = null;
@@ -22,8 +27,12 @@ export async function connectToDatabase() {
     }
     
     client = new MongoClient(MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000, // 5 second timeout
-      connectTimeoutMS: 10000, // 10 second timeout
+      serverSelectionTimeoutMS: 10000, // 10 second timeout
+      connectTimeoutMS: 15000, // 15 second timeout
+      socketTimeoutMS: 45000, // 45 second timeout
+      maxPoolSize: 10,
+      retryWrites: true,
+      w: 'majority'
     });
     await client.connect();
     db = client.db('getech');
