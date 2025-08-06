@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx index.ts",
-    "build": "esbuild index.ts --platform=node --bundle --format=esm --outdir=dist",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "build": "tsc",
+    "start": "cross-env NODE_ENV=production tsx index.ts",
     "check": "tsc",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",

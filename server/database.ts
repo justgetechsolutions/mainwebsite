@@ -46,7 +46,17 @@ export async function connectToDatabase() {
 }
 
 // Initialize connection
-const { client: mongoClient, db: database } = await connectToDatabase();
+let mongoClient: MongoClient | null = null;
+let database: any = null;
+
+async function initializeDatabase() {
+  const result = await connectToDatabase();
+  mongoClient = result.client;
+  database = result.db;
+}
+
+// Initialize immediately
+initializeDatabase().catch(console.error);
 
 export { database as db, mongoClient };
 
