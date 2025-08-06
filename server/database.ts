@@ -13,9 +13,16 @@ if (MONGODB_URI.includes('mongodb+srv://') && !MONGODB_URI.includes('?')) {
   MONGODB_URI += '?retryWrites=true&w=majority';
 }
 
-// For Render compatibility, try converting mongodb+srv to mongodb if SSL fails
+// For Render compatibility, convert mongodb+srv to mongodb to avoid SSL issues
 if (process.env.NODE_ENV === 'production' && MONGODB_URI.includes('mongodb+srv://')) {
-  console.log('🌐 Production environment: Using mongodb+srv format');
+  console.log('🌐 Production environment: Converting to standard MongoDB format to avoid SSL issues');
+  MONGODB_URI = MONGODB_URI.replace('mongodb+srv://', 'mongodb://');
+  // Add SSL parameters for standard MongoDB
+  if (!MONGODB_URI.includes('?')) {
+    MONGODB_URI += '?ssl=true&authSource=admin';
+  } else {
+    MONGODB_URI += '&ssl=true&authSource=admin';
+  }
 }
 
 let client: MongoClient | null = null;
