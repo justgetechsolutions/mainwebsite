@@ -1,4 +1,8 @@
 import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 // MongoDB connection with better error handling
 // Try to use MongoDB Atlas or local MongoDB
@@ -10,6 +14,13 @@ let db: any = null;
 export async function connectToDatabase() {
   try {
     console.log('🔌 Attempting to connect to MongoDB at:', MONGODB_URI);
+    
+    // Check if we have a valid MongoDB URI
+    if (!MONGODB_URI || MONGODB_URI === 'mongodb://127.0.0.1:27017/getech') {
+      console.log('⚠️  No MongoDB URI provided, using mock database');
+      throw new Error('No MongoDB URI configured');
+    }
+    
     client = new MongoClient(MONGODB_URI, {
       serverSelectionTimeoutMS: 5000, // 5 second timeout
       connectTimeoutMS: 10000, // 10 second timeout
