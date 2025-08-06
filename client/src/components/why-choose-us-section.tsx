@@ -91,7 +91,7 @@ export default function WhyChooseUsSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {benefits.map((benefit, index) => {
+          {benefits.map((benefit) => {
             const IconComponent = benefit.icon;
             return (
               <motion.div 

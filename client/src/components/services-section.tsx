@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, Bot, ShoppingCart, BarChart3, MessageSquare, Database, Settings, Globe } from "lucide-react";
+import { Users, Bot, ShoppingCart, BarChart3, MessageSquare, Settings, Globe } from "lucide-react";
 
 const services = [
   {
@@ -103,7 +103,7 @@ export default function ServicesSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {services.map((service, index) => {
+          {services.map((service) => {
             const IconComponent = service.icon;
             return (
               <motion.div

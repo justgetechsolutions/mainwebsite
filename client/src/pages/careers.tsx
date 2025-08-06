@@ -1,53 +1,9 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { Briefcase, GraduationCap, Users, Zap, Brain, Code, Send, Mail, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { Briefcase, Users, Zap, Brain, Mail, Phone } from "lucide-react";
 
 export default function Careers() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    university: "",
-    course: "",
-    graduationYear: "",
-    position: "",
-    coverLetter: "",
-    resume: null as File | null
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData(prev => ({ ...prev, resume: e.target.files![0] }));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    alert("Thank you for your application! We'll get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      university: "",
-      course: "",
-      graduationYear: "",
-      position: "",
-      coverLetter: "",
-      resume: null
-    });
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">

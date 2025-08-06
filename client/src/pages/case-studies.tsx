@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { TrendingUp, Users, Zap, ShoppingCart, MessageSquare, Brain } from "lucide-react";
+import { TrendingUp, Users, Zap, ShoppingCart } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function CaseStudies() {

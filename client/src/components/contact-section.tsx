@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Clock, Send, MapPin, MessageSquare } from "lucide-react";
-import { useState } from "react";
+import { Mail, Phone, Clock, Send, MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertContactSubmissionSchema } from "@shared/schema";
@@ -31,7 +30,7 @@ export default function ContactSection() {
       const response = await apiRequest("POST", "/api/contact", data);
       return response.json();
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast({
         title: "Message Sent Successfully!",
         description: "Thank you for contacting JustGeTech. We'll get back to you within 24 hours.",

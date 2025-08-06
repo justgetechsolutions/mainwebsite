@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Bot } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation, useRoute } from "wouter";
+import { useLocation } from "wouter";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
