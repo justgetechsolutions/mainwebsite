@@ -26,7 +26,7 @@ const industries = [
   {
     title: "Technology & SaaS",
     description: "Custom AI solutions and business management software for tech companies to scale operations and enhance customer experience.",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
+    image: "https://www.corporatevision-news.com/wp-content/uploads/2023/04/SaaS-Business.jpg",
     icon: Building2,
     color: "from-purple-500 to-pink-500"
   },
