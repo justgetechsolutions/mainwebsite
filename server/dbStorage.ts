@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type ContactSubmission, type InsertContactSubmission } from "@shared/schema";
+import { type User, type InsertUser, type ContactSubmission, type InsertContactSubmission } from "./schema";
 import { db } from "./database";
 import { ObjectId } from "mongodb";
 

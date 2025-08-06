@@ -1,9 +1,0 @@
-{
-  "name": "getech-shared",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "mongodb": "^6.3.0",
-    "zod": "^3.24.2"
-  }
-} 

@@ -25,4 +25,4 @@ export type InsertContactSubmission = z.infer<typeof insertContactSubmissionSche
 export type ContactSubmission = InsertContactSubmission & {
   _id: ObjectId;
   createdAt: Date;
-};
+}; 

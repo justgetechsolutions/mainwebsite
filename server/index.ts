@@ -1,7 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { log } from "./utils";
-import { insertContactSubmissionSchema } from "@shared/schema";
+import { insertContactSubmissionSchema } from "./schema";
 import { z } from "zod";
 import { storage } from "./storage";
 
