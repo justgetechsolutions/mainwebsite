@@ -2,8 +2,9 @@ services:
   - type: web
     name: getech-backend
     env: node
-    buildCommand: cd server && npm install && npm run build
-    startCommand: cd server && npm start
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
