@@ -91,7 +91,7 @@ export default function IndustriesSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {industries.map((industry) => {
+          {industries.map((industry, index) => {
             const IconComponent = industry.icon;
             return (
               <motion.div

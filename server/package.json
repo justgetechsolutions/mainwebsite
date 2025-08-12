@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx index.ts",
     "build": "tsc",
-    "start": "cross-env NODE_ENV=production tsx index.ts",
+    "start": "npm run build && cross-env NODE_ENV=production node dist/index.js",
+    "start:prod": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
