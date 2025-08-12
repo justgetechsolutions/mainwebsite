@@ -176,7 +176,7 @@ export default function ContactSection() {
                   id="name"
                   type="text"
                   {...register("name")}
-                  className="mt-2"
+                  className="mt-2 placeholder:text-gray-400"
                   placeholder="Enter your full name"
                 />
                 {errors.name && (
@@ -192,7 +192,7 @@ export default function ContactSection() {
                   id="email"
                   type="email"
                   {...register("email")}
-                  className="mt-2"
+                  className="mt-2 placeholder:text-gray-400"
                   placeholder="your.email@company.com"
                 />
                 {errors.email && (
@@ -208,7 +208,7 @@ export default function ContactSection() {
                   id="phone"
                   type="tel"
                   {...register("phone")}
-                  className="mt-2"
+                  className="mt-2 placeholder:text-gray-400"
                   placeholder="+91-7802992523"
                 />
                 {errors.phone && (
@@ -224,7 +224,7 @@ export default function ContactSection() {
                   id="company"
                   type="text"
                   {...register("company")}
-                  className="mt-2"
+                  className="mt-2 placeholder:text-gray-400"
                   placeholder="Your company or organization"
                 />
                 {errors.company && (
@@ -239,7 +239,7 @@ export default function ContactSection() {
                 <Textarea
                   id="message"
                   {...register("message")}
-                  className="mt-2"
+                  className="mt-2 placeholder:text-gray-400"
                   rows={4}
                   placeholder="Describe your project requirements, goals, and timeline. We're interested in CRM, HRM, AI automation, e-commerce, or custom solutions."
                 />
