@@ -11,11 +11,12 @@ const app = express();
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// CORS middleware for production - allow both localhost and Vercel domain
+// CORS middleware for production - allow multiple domains
 app.use((req, res, next) => {
   const allowedOrigins = [
     'http://localhost:3000',
-    'https://mainwebsite-iota.vercel.app'
+    'https://mainwebsite-iota.vercel.app',
+    'https://justgetech.com'
   ];
   
   const origin = req.headers.origin;
