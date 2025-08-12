@@ -10,6 +10,10 @@ export default function Footer() {
     setLocation('/#contact');
   };
 
+  const navigateToPage = (path: string) => {
+    setLocation(path);
+  };
+
   return (
     <footer className="bg-gray-900 py-16 relative overflow-hidden">
       {/* Background Pattern */}
@@ -104,26 +108,26 @@ export default function Footer() {
           >
             <h3 className="text-white font-semibold mb-4">Our Services</h3>
             <ul className="space-y-3">
-              <li><a href="#services" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
+              <li><button onClick={() => setLocation('/#services')} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 CRM & HRM Software
-              </a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
+              </button></li>
+              <li><button onClick={() => setLocation('/#services')} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 AI Automation Systems
-              </a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
+              </button></li>
+              <li><button onClick={() => setLocation('/#services')} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 E-commerce Development
-              </a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
+              </button></li>
+              <li><button onClick={() => setLocation('/#services')} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 Voice AI Agents
-              </a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
+              </button></li>
+              <li><button onClick={() => setLocation('/#services')} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 Custom AI Solutions
-              </a></li>
+              </button></li>
             </ul>
           </motion.div>
           
@@ -135,23 +139,15 @@ export default function Footer() {
           >
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-3">
-              <li><a href="/about" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
+              <li><button onClick={() => navigateToPage('/about')} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 About JustGeTech
-              </a></li>
-              <li><a href="/team" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
-                <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
-                Our Team
-              </a></li>
-              <li><a href="/case-studies" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
-                <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
-                Case Studies
-              </a></li>
-              <li><a href="/careers" className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center">
+              </button></li>
+              <li><button onClick={() => navigateToPage('/careers')} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 Careers
-              </a></li>
-              <li><button onClick={navigateToContact} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left">
+              </button></li>
+              <li><button onClick={navigateToContact} className="text-gray-300 hover:text-indigo-400 transition-colors duration-200 flex items-center w-full text-left cursor-pointer">
                 <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
                 Contact Us
               </button></li>
@@ -171,8 +167,8 @@ export default function Footer() {
               © {currentYear} JustGeTech. All rights reserved. | Founded by Chauhan Dhruvil
             </p>
             <div className="flex space-x-6 text-sm">
-              <a href="/terms" className="text-gray-400 hover:text-indigo-400 transition-colors duration-200">Terms of Service</a>
-              <a href="/cookies" className="text-gray-400 hover:text-indigo-400 transition-colors duration-200">Cookie Policy</a>
+              <button onClick={() => navigateToPage('/terms')} className="text-gray-400 hover:text-indigo-400 transition-colors duration-200 cursor-pointer">Terms of Service</button>
+              <button onClick={() => navigateToPage('/cookies')} className="text-gray-400 hover:text-indigo-400 transition-colors duration-200 cursor-pointer">Cookie Policy</button>
             </div>
           </div>
         </motion.div>

@@ -105,11 +105,12 @@ export default function Navigation() {
           <div className="flex items-center space-x-4">
             <motion.button 
               onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 sm:px-6 py-2 rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get Demo
+              <span className="hidden sm:inline">Get Demo</span>
+              <span className="sm:hidden">Demo</span>
             </motion.button>
             <motion.button 
               className={`md:hidden ${scrolled ? 'text-gray-700' : 'text-white'}`}

@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Briefcase, Users, Zap, Brain, Mail, Phone } from "lucide-react";
 
 export default function Careers() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
